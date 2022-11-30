@@ -1,0 +1,55 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Piece",
+"class": "Card",
+"language": "GDScript",
+"path": "res://scripts/components/card/Card.gd"
+}, {
+"base": "Node2D",
+"class": "Piece",
+"language": "GDScript",
+"path": "res://scripts/components/Piece.gd"
+}, {
+"base": "Card",
+"class": "PlayingCard",
+"language": "GDScript",
+"path": "res://scripts/components/card/PlayingCard.gd"
+}, {
+"base": "Node2D",
+"class": "SceneParent",
+"language": "GDScript",
+"path": "res://scripts/utils/SceneParent.gd"
+} ]
+_global_script_class_icons={
+"Card": "",
+"Piece": "",
+"PlayingCard": "",
+"SceneParent": ""
+}
+
+[application]
+
+config/name="Windmill Arcade"
+run/main_scene="res://scenes/Root.tscn"
+config/icon="res://icon.png"
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
