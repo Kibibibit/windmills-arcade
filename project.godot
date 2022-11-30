@@ -14,7 +14,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/components/card/Card.gd"
 }, {
-"base": "Node2D",
+"base": "ResourceComponent",
+"class": "Deck",
+"language": "GDScript",
+"path": "res://scripts/components/card/Deck.gd"
+}, {
+"base": "ResourceComponent",
 "class": "Piece",
 "language": "GDScript",
 "path": "res://scripts/components/Piece.gd"
@@ -30,16 +35,29 @@ _global_script_classes=[ {
 "path": "res://scripts/utils/PlayingCardParent.gd"
 }, {
 "base": "Node2D",
+"class": "ResourceComponent",
+"language": "GDScript",
+"path": "res://scripts/components/ResourceComponent.gd"
+}, {
+"base": "Node2D",
 "class": "SceneParent",
 "language": "GDScript",
 "path": "res://scripts/utils/SceneParent.gd"
+}, {
+"base": "PlayingCard",
+"class": "StackingCard",
+"language": "GDScript",
+"path": "res://scripts/components/card/StackingCard.gd"
 } ]
 _global_script_class_icons={
 "Card": "",
+"Deck": "",
 "Piece": "",
 "PlayingCard": "",
 "PlayingCardParent": "",
-"SceneParent": ""
+"ResourceComponent": "",
+"SceneParent": "",
+"StackingCard": ""
 }
 
 [application]

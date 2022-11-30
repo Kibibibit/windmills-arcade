@@ -1,5 +1,5 @@
 class_name Piece
-extends Node2D
+extends ResourceComponent
 
 var sprite: Sprite
 
@@ -12,9 +12,3 @@ func _ready():
 func _process(_delta):
 	self.sprite.position = self.position
 
-func _get_parent():
-	return get_tree().get_root().get_node("Root").get_node("Game")
-
-func get_texture(texture: String):
-	var scene_parent: SceneParent = _get_parent()
-	return scene_parent.get_texture(texture)

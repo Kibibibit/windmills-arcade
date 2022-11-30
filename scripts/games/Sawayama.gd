@@ -4,6 +4,7 @@ extends PlayingCardParent
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self._textures = {
+		"card-slot":"res://sprites/cards/card-slot.png",
 		"card-back":"res://sprites/cards/basic-card-back.png",
 		"card-front":"res://sprites/cards/basic-card-front.png",
 		"starfleet1":"res://sprites/cards/sawayama/starfleet/sawayama-starfleet-ace.png",
@@ -21,16 +22,20 @@ func _ready():
 		"starfleet13":"res://sprites/cards/sawayama/starfleet/sawayama-starfleet-king.png",
 	}
 	
-	self._suit_names = ["starfleet"]
+	self._suit_names = ["starfleet","starfleet","starfleet","starfleet"]
 	
 	
 	self.load_resources()
-	var card =  PlayingCard.new("card-front","card-back",0,1)
-	card.position.x = 100
-	card.position.y = 100
-	add_child(card)
+	
+	var deck: Deck = Deck.new(_cards())
+	deck.position.x = 50
+	deck.position.y = 50
+	
+	add_child(deck)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _cards():
+	var cards = []
+	for _suit in range(1,5):
+		for _value in range(1,14):
+			cards.append(PlayingCard.new("card-front","card-back",_suit,_value))
+	return cards

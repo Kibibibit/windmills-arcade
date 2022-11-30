@@ -10,6 +10,7 @@ var value_sprite: Sprite
 func _ready():
 	value_sprite = Sprite.new()
 	value_sprite.centered = false
+	value_sprite.z_as_relative = true
 	value_sprite.z_index = 1
 	value_sprite.texture = .get_texture(._get_parent().card_suit_value_to_sprite_code(suit,value))
 	#_draw_values()
