@@ -1,8 +1,6 @@
 class_name PlayingCard
 extends Card
 
-var suit_sprite: Array
-
 
 var suit: int
 var value: int
@@ -12,19 +10,21 @@ var value_sprite: Sprite
 func _ready():
 	value_sprite = Sprite.new()
 	value_sprite.centered = false
-	.add_child(sprite)
+	value_sprite.z_index = 1
 	value_sprite.texture = .get_texture(._get_parent().card_suit_value_to_sprite_code(suit,value))
+	#_draw_values()
+	add_child(value_sprite)
 
-func _init(front_sprite:String,back_sprite:String,_suit:int,_value:int).(front_sprite,back_sprite,true):
+func _init(front_sprite:String,back_sprite:String,_suit:int,_value:int).(front_sprite,back_sprite,false):
 	suit=_suit
 	value=_value
-	
 
-func _process(_delta):
-	._process(_delta)
+func _draw_values():
 	if (value_sprite.visible != self._face_up):
-		print(!self._face_up)
 		value_sprite.visible = self._face_up
 		.update()
-	
-	
+
+func _process(_delta):
+	value_sprite.position = self.position
+	._process(_delta)
+	_draw_values()

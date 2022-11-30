@@ -26,6 +26,8 @@ func _ready():
 	
 	self.load_resources()
 	var card =  PlayingCard.new("card-front","card-back",0,1)
+	card.position.x = 100
+	card.position.y = 100
 	add_child(card)
 
 
