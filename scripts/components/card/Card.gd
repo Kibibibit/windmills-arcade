@@ -1,6 +1,14 @@
 class_name Card
 extends Piece
 
+### Card ##################
+# Last Update: 2022-11-30 #
+# Author     : Kibi       #
+# #########################
+
+# Parent class for any Piece that can
+# be flipped over. Ideal for cards, but could also include
+# Mahjong tiles, reversi pieces or even a coin or something
 
 var _face_up: bool
 var _last_face_up: bool

@@ -1,6 +1,14 @@
 class_name Deck
 extends ResourceComponent
 
+### Deck ##################
+# Last Update: 2022-11-30 #
+# Author     : Kibi       #
+# #########################
+
+# A class that stores a set of given cards,
+# and can be shuffled. Draws a stack of 'card-back'
+# sprites to represent the size of the deck
 
 var deck: Array
 var offset: int = 0
@@ -21,6 +29,9 @@ func _ready():
 			sprite.texture = .get_texture('card-back')
 			add_child(sprite)
 			offset = offset+1
+
+func shuffle() -> void:
+	deck.shuffle()
 
 func deal() -> Card:
 	var card = deck.pop_back()

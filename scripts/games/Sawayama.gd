@@ -1,8 +1,15 @@
 extends PlayingCardParent
 
+### Sawayama ##############
+# Last Update: 2022-11-30 #
+# Author     : Kibi       #
+# #########################
 
-# Called when the node enters the scene tree for the first time.
+# The root node of the sawayama solataire game
+
+
 func _ready():
+	# TODO: Work out how to do this with json
 	self._textures = {
 		"card-slot":"res://sprites/cards/card-slot.png",
 		"card-back":"res://sprites/cards/basic-card-back.png",
@@ -22,6 +29,7 @@ func _ready():
 		"starfleet13":"res://sprites/cards/sawayama/starfleet/sawayama-starfleet-king.png",
 	}
 	
+	# TODO: Get other suits drawn
 	self._suit_names = ["starfleet","starfleet","starfleet","starfleet"]
 	
 	

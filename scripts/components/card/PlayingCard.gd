@@ -1,6 +1,15 @@
 class_name PlayingCard
 extends Card
 
+### PlayingCard ###########
+# Last Update: 2022-11-30 #
+# Author     : Kibi       #
+# #########################
+
+# A Card subclass that includes a suit and a value.
+# The value is only shown when facing the camera.
+# Could also represent other Pieces with 2 paramters,
+# such as Mahjong tiles
 
 var suit: int
 var value: int
@@ -29,3 +38,5 @@ func _process(_delta):
 	value_sprite.position = self.position
 	._process(_delta)
 	_draw_values()
+	
+# TODO: Value sprite cleanup
