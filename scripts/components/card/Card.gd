@@ -29,6 +29,7 @@ func _set_sprite() -> void:
 		self.sprite.texture = .get_texture(_front_sprite)
 	else:
 		self.sprite.texture = .get_texture(_back_sprite)
+	_last_face_up = _face_up
 	.update()
 
 # Getters

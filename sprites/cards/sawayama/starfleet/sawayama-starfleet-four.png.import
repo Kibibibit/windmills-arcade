@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/basic-card-back.png-675f7cc2f8583b137026115ed3623bd1.stex"
+path="res://.import/sawayama-starfleet-four.png-6886f9534018792f333a92b4e103b0d0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/basic-card-back.png"
-dest_files=[ "res://.import/basic-card-back.png-675f7cc2f8583b137026115ed3623bd1.stex" ]
+source_file="res://sprites/cards/sawayama/starfleet/sawayama-starfleet-four.png"
+dest_files=[ "res://.import/sawayama-starfleet-four.png-6886f9534018792f333a92b4e103b0d0.stex" ]
 
 [params]
 
