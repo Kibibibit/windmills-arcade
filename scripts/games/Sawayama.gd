@@ -27,10 +27,23 @@ func _ready():
 		"starfleet11":"res://sprites/cards/sawayama/starfleet/sawayama-starfleet-jack.png",
 		"starfleet12":"res://sprites/cards/sawayama/starfleet/sawayama-starfleet-queen.png",
 		"starfleet13":"res://sprites/cards/sawayama/starfleet/sawayama-starfleet-king.png",
+		"bajor1":"res://sprites/cards/sawayama/bajor/sawayama-bajor-ace.png",
+		"bajor2":"res://sprites/cards/sawayama/bajor/sawayama-bajor-two.png",
+		"bajor3":"res://sprites/cards/sawayama/bajor/sawayama-bajor-three.png",
+		"bajor4":"res://sprites/cards/sawayama/bajor/sawayama-bajor-four.png",
+		"bajor5":"res://sprites/cards/sawayama/bajor/sawayama-bajor-five.png",
+		"bajor6":"res://sprites/cards/sawayama/bajor/sawayama-bajor-six.png",
+		"bajor7":"res://sprites/cards/sawayama/bajor/sawayama-bajor-seven.png",
+		"bajor8":"res://sprites/cards/sawayama/bajor/sawayama-bajor-eight.png",
+		"bajor9":"res://sprites/cards/sawayama/bajor/sawayama-bajor-nine.png",
+		"bajor10":"res://sprites/cards/sawayama/bajor/sawayama-bajor-ten.png",
+		"bajor11":"res://sprites/cards/sawayama/bajor/sawayama-bajor-jack.png",
+		"bajor12":"res://sprites/cards/sawayama/bajor/sawayama-bajor-queen.png",
+		"bajor13":"res://sprites/cards/sawayama/bajor/sawayama-bajor-king.png",
 	}
 	
 	# TODO: Get other suits drawn
-	self._suit_names = ["starfleet","starfleet","starfleet","starfleet"]
+	self._suit_names = ["starfleet","bajor","starfleet","bajor"]
 	
 	
 	self.load_resources()
