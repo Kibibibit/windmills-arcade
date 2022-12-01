@@ -55,10 +55,10 @@ func _ready():
 	
 	add_child(deck)
 	
-	for i in range(0,52):
+	for i in range(0,10):
 		var card = deck.deal()
 		card._face_up=true
-		card.position.x = 50+i*16
+		card.position.x = 50+i*20
 		card.z_index=i
 		card.position.y=100
 		add_child(card)
