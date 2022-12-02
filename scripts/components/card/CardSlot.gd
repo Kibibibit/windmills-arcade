@@ -1,7 +1,9 @@
 extends Node2D
 
+
 export var card_x_offset: int = 0
 export var card_y_offset: int = 10
+export var player_can_place: bool = true
 export var _face_up: bool
 
 func _process(_delta):

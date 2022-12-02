@@ -8,7 +8,7 @@
 script = ExtResource( 1 )
 
 [node name="PlayingField" type="Node2D" parent="."]
-position = Vector2( 273, 196 )
+position = Vector2( 210, 138 )
 z_index = 10
 
 [node name="CardSlot1" parent="PlayingField" instance=ExtResource( 3 )]
@@ -40,4 +40,12 @@ position = Vector2( 389, 0 )
 _face_up = true
 
 [node name="Deck" parent="." instance=ExtResource( 2 )]
-position = Vector2( 60, 77 )
+position = Vector2( 63, 45 )
+
+[node name="Consumers" type="Node2D" parent="."]
+position = Vector2( 86, 189 )
+
+[node name="StarfleetSlot" parent="Consumers" instance=ExtResource( 3 )]
+
+[node name="BajorSlot" parent="Consumers" instance=ExtResource( 3 )]
+position = Vector2( 1, 68 )

@@ -73,7 +73,10 @@ func _cards():
 			cards.append(make_card(_suit,_value))
 	return cards
 	
-
+func on_card_place() -> void:
+	if (dealing):
+		return
+	
 		
 		
 func _process(_delta):
@@ -91,5 +94,6 @@ func _process(_delta):
 				last_deal = deal_timer
 			else:
 				dealing = false
+				on_card_place()
 		
 	pass
