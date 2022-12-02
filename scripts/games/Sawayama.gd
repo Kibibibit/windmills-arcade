@@ -7,6 +7,12 @@ extends PlayingCardParent
 
 # The root node of the sawayama solataire game
 
+var dealing: bool = false
+var dealing_slots: Array
+var deal_timer: int
+var last_deal: int
+var deal_spacing: int = 100
+var deal_index: int = 0
 
 func _ready():
 	# TODO: Work out how to do this with json
@@ -48,10 +54,7 @@ func _ready():
 	
 	self.load_resources()
 	
-	var cards: Array = _cards()
-	cards.shuffle()
-	
-	$Deck.add_cards(cards)
+	new_game()
 
 func _cards():
 	var cards = []
@@ -59,3 +62,30 @@ func _cards():
 		for _value in range(1,14):
 			cards.append(PlayingCard.new("card-front","card-back",_suit,_value))
 	return cards
+	
+func new_game():
+	dealing = true
+	deal_timer = 0
+	var cards: Array = _cards()
+	cards.shuffle()
+	$Deck.add_cards(cards)
+	dealing_slots = []
+	for i in range(1,8):
+		dealing_slots.append($PlayingField.get_node("Slot%d" % i))
+		
+		
+func _process(delta):
+	if (dealing):
+		if (deal_timer - last_deal > deal_spacing):
+			if (dealing_slots.size() > 0):
+				if (deal_index >= dealing_slots.size()):
+					deal_index = 0
+					dealing_slots.pop_front()
+				if (dealing_slots.size() > 0):			
+					var card = $Deck.deal_card()
+					dealing_slots[deal_index].add_card(card)
+					last_deal = deal_timer
+					deal_index += 1
+				else:
+					dealing = false
+		deal_timer += (delta*1000 as int)

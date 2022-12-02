@@ -26,9 +26,8 @@ var emptied: bool = false
 var cards: Array
 
 func add_card(card: Card):
-	var stack_size: float = cards.size() as float
-	card.position.x += floor(stack_size/card_offset_div)*card_x_offset
-	card.position.y += floor(stack_size/card_offset_div)*card_y_offset
+	card.position.x -= self.global_position.x
+	card.position.y -= self.global_position.y
 	card._face_up = card_face_up()
 	card.z_index = cards.size()*2
 	cards.append(card)
@@ -49,12 +48,29 @@ func add_cards(new_cards: Array):
 	for card in new_cards:
 		add_card(card)
 
-func deal_card():
-	pass
+func deal_card() -> Card:
+	var card = cards.pop_back()
+	card.position.x += self.position.x
+	card.position.y += self.position.y
+	remove_child(card)
+	return card
 
 func _ready():
-	
 	if !slot_visible:
 		$Sprite.free()
+
+func _process(_delta):
+	var i: float = 0.0
+	for card in cards:
+		
+		var card_x = floor(i/card_offset_div)*card_x_offset
+		var card_y = floor(i/card_offset_div)*card_y_offset
+		
+		if (card.position.x != card_x):
+			card.position.x = lerp(card.position.x,card_x,0.1)
+		if (card.position.y != card_y):
+			card.position.y = lerp(card.position.y,card_y,0.1)
+		
+		i += 1.0
 
 

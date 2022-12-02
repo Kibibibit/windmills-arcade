@@ -10,3 +10,56 @@ script = ExtResource( 1 )
 position = Vector2( 118, 76 )
 card_offset_div = 3
 player_can_place = true
+
+[node name="PlayingField" type="Node2D" parent="."]
+position = Vector2( 191, 211 )
+z_index = 10
+
+[node name="Slot1" parent="PlayingField" instance=ExtResource( 2 )]
+position = Vector2( 15, 0 )
+card_y_offset = 16
+player_can_place = true
+placement_rule = 1
+cards_face_up = 1
+
+[node name="Slot2" parent="PlayingField" instance=ExtResource( 2 )]
+position = Vector2( 79, 0 )
+card_y_offset = 16
+player_can_place = true
+placement_rule = 1
+cards_face_up = 1
+
+[node name="Slot3" parent="PlayingField" instance=ExtResource( 2 )]
+position = Vector2( 143, 0 )
+card_y_offset = 16
+player_can_place = true
+placement_rule = 1
+cards_face_up = 1
+
+[node name="Slot4" parent="PlayingField" instance=ExtResource( 2 )]
+position = Vector2( 207, 0 )
+card_y_offset = 16
+player_can_place = true
+placement_rule = 1
+cards_face_up = 1
+
+[node name="Slot5" parent="PlayingField" instance=ExtResource( 2 )]
+position = Vector2( 271, 0 )
+card_y_offset = 16
+player_can_place = true
+placement_rule = 1
+cards_face_up = 1
+
+[node name="Slot6" parent="PlayingField" instance=ExtResource( 2 )]
+position = Vector2( 335, 0 )
+card_y_offset = 16
+player_can_place = true
+placement_rule = 1
+cards_face_up = 1
+
+[node name="Slot7" parent="PlayingField" instance=ExtResource( 2 )]
+position = Vector2( 399, 0 )
+card_y_offset = 16
+player_can_place = true
+placement_rule = 1
+cards_face_up = 1
