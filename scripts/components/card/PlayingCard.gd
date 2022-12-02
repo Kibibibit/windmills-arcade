@@ -35,8 +35,6 @@ func _draw_values():
 		.update()
 
 func _process(_delta):
-	value_sprite.position = self.position
-	._process(_delta)
 	_draw_values()
 	
 # TODO: Value sprite cleanup

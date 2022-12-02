@@ -48,20 +48,10 @@ func _ready():
 	
 	self.load_resources()
 	
-	var deck: Deck = Deck.new(_cards())
-	deck.shuffle()
-	deck.position.x = 50
-	deck.position.y = 50
+	var cards: Array = _cards()
+	cards.shuffle()
 	
-	add_child(deck)
-	
-	for i in range(0,10):
-		var card = deck.deal()
-		card._face_up=true
-		card.position.x = 50+i*20
-		card.z_index=i
-		card.position.y=100
-		add_child(card)
+	$Deck.add_cards(cards)
 
 func _cards():
 	var cards = []

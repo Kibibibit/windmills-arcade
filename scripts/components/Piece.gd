@@ -17,8 +17,5 @@ func _ready():
 	sprite.centered = false
 	sprite.z_index = 0
 	.add_child(sprite)
-	
-func _process(_delta):
-	self.sprite.position = self.position
 
 # TODO: Cleanup method for sprite
