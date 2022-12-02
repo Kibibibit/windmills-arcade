@@ -18,6 +18,8 @@ export (PlayerPlaceRule) var placement_rule
 enum CardFaceUpRule {ONCE_EMPTY,FACE_UP,FACE_DOWN}
 export (CardFaceUpRule) var cards_face_up
 
+export var slot_visible: bool = true
+
 var emptied: bool = false
 
 
@@ -25,7 +27,6 @@ var cards: Array
 
 func add_card(card: Card):
 	var stack_size: float = cards.size() as float
-	card.position = self.position
 	card.position.x += floor(stack_size/card_offset_div)*card_x_offset
 	card.position.y += floor(stack_size/card_offset_div)*card_y_offset
 	card._face_up = card_face_up()
@@ -52,10 +53,8 @@ func deal_card():
 	pass
 
 func _ready():
-	self.position.x = 40
-	self.position.y = 40
-
-func _process(_delta):
-	$Sprite.position = self.position
+	
+	if !slot_visible:
+		$Sprite.free()
 
 
