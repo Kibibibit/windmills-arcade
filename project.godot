@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/components/card/Card.gd"
 }, {
-"base": "Node2D",
-"class": "CardStack",
-"language": "GDScript",
-"path": "res://scripts/components/card/CardStack.gd"
-}, {
 "base": "ResourceComponent",
 "class": "Deck",
 "language": "GDScript",
@@ -56,7 +51,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Card": "",
-"CardStack": "",
 "Deck": "",
 "Piece": "",
 "PlayingCard": "",

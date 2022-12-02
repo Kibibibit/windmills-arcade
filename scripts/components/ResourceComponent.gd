@@ -11,6 +11,10 @@ extends Node2D
 # SceneParent.
 # Not used for assets in the root node!
 
+func is_class(_class: String):
+	return get_class() == _class
+
+
 func _get_parent():
 	return get_tree().get_root().get_node("Root").get_node("Game")
 

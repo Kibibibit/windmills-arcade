@@ -50,42 +50,46 @@ func _ready():
 	
 	# TODO: Get other suits drawn
 	self._suit_names = ["starfleet","bajor","starfleet","bajor"]
-	
-	
 	self.load_resources()
 	
-	new_game()
+	$Deck.add_cards(_cards())
+	
+	for i in range(1,8):
+		dealing_slots.append("CardSlot%s"%i)
+		
+	dealing = true
+
+func make_card(suit:int, value:int):
+	var card: StackingCard = StackingCard.new("card-front","card-back",suit,value)
+	card.placement_rule = 0
+	card.player_can_place = true
+	card.card_consumer = false
+	return card
 
 func _cards():
 	var cards = []
 	for _suit in range(1,5):
 		for _value in range(1,14):
-			cards.append(PlayingCard.new("card-front","card-back",_suit,_value))
+			cards.append(make_card(_suit,_value))
 	return cards
 	
-func new_game():
-	dealing = true
-	deal_timer = 0
-	var cards: Array = _cards()
-	cards.shuffle()
-	$Deck.add_cards(cards)
-	dealing_slots = []
-	for i in range(1,8):
-		dealing_slots.append($PlayingField.get_node("Slot%d" % i))
+
 		
 		
-func _process(delta):
+func _process(_delta):
 	if (dealing):
+		deal_timer += _delta*1000
 		if (deal_timer - last_deal > deal_spacing):
 			if (dealing_slots.size() > 0):
 				if (deal_index >= dealing_slots.size()):
 					deal_index = 0
 					dealing_slots.pop_front()
-				if (dealing_slots.size() > 0):			
-					var card = $Deck.deal_card()
-					dealing_slots[deal_index].add_card(card)
-					last_deal = deal_timer
-					deal_index += 1
-				else:
-					dealing = false
-		deal_timer += (delta*1000 as int)
+					if (dealing_slots.size() == 0):
+						return
+				get_node("PlayingField/%s" % dealing_slots[deal_index]).add_card($Deck.deal())
+				deal_index += 1
+				last_deal = deal_timer
+			else:
+				dealing = false
+		
+	pass

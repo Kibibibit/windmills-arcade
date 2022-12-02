@@ -10,32 +10,38 @@ extends ResourceComponent
 # and can be shuffled. Draws a stack of 'card-back'
 # sprites to represent the size of the deck
 
-var deck: Array
+var deck: Array = []
 var offset: int = 0
 var sprites: Array
 
-func _init(cards: Array = []):
-	deck = cards
+func add_cards(cards: Array):
+	for card in cards:
+		add_card(card)
 
-func _ready():
-	for i in range(0, deck.size()):
-		if (i%4==0):
-			var sprite = Sprite.new()
-			sprite.z_as_relative=true
-			sprite.centered=false
-			sprite.z_index=offset+1
-			sprite.position.y -= offset
-			sprites.append(sprite)
-			sprite.texture = .get_texture('card-back')
-			add_child(sprite)
-			offset = offset+1
+func add_card(card: Card):
+	deck.append(card)
+	var sprite = Sprite.new()
+	sprite.z_as_relative=true
+	sprite.centered=false
+	sprite.z_index=offset+1
+	sprite.position.y -= offset
+	sprites.append(sprite)
+	sprite.texture = .get_texture('card-back')
+	add_child(sprite)
+	offset+= 1
 
 func shuffle() -> void:
 	deck.shuffle()
 
+func size() -> int:
+	return deck.size()
+
 func deal() -> Card:
+	if (deck.size() <= 0):
+		return null
 	var card = deck.pop_back()
-	if (deck.size() % 4 == 0):
-		var sprite = sprites.pop_back()
-		sprite.free()
+	card.position.x = self.position.x
+	card.position.y = self.position.y + deck.size()
+	sprites.pop_back().free()
+		
 	return card
