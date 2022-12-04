@@ -1,3 +1,4 @@
+class_name RootObject
 extends Node2D
 
 ### Root ##################
@@ -15,9 +16,3 @@ func _ready():
 	game_resource = load("res://scenes/games/Sawayama.tscn")
 	game_instance = game_resource.instance()
 	add_child(game_instance)
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

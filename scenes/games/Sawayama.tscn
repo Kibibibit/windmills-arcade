@@ -1,51 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://scripts/games/Sawayama.gd" type="Script" id=1]
-[ext_resource path="res://scenes/components/Deck.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/components/CardSlot.tscn" type="PackedScene" id=3]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
-
-[node name="PlayingField" type="Node2D" parent="."]
-position = Vector2( 210, 138 )
-z_index = 10
-
-[node name="CardSlot1" parent="PlayingField" instance=ExtResource( 3 )]
-position = Vector2( 5, 0 )
-_face_up = true
-
-[node name="CardSlot2" parent="PlayingField" instance=ExtResource( 3 )]
-position = Vector2( 69, 0 )
-_face_up = true
-
-[node name="CardSlot3" parent="PlayingField" instance=ExtResource( 3 )]
-position = Vector2( 133, 0 )
-_face_up = true
-
-[node name="CardSlot4" parent="PlayingField" instance=ExtResource( 3 )]
-position = Vector2( 197, 0 )
-_face_up = true
-
-[node name="CardSlot5" parent="PlayingField" instance=ExtResource( 3 )]
-position = Vector2( 261, 0 )
-_face_up = true
-
-[node name="CardSlot6" parent="PlayingField" instance=ExtResource( 3 )]
-position = Vector2( 325, 0 )
-_face_up = true
-
-[node name="CardSlot7" parent="PlayingField" instance=ExtResource( 3 )]
-position = Vector2( 389, 0 )
-_face_up = true
-
-[node name="Deck" parent="." instance=ExtResource( 2 )]
-position = Vector2( 63, 45 )
-
-[node name="Consumers" type="Node2D" parent="."]
-position = Vector2( 86, 189 )
-
-[node name="StarfleetSlot" parent="Consumers" instance=ExtResource( 3 )]
-
-[node name="BajorSlot" parent="Consumers" instance=ExtResource( 3 )]
-position = Vector2( 1, 68 )
