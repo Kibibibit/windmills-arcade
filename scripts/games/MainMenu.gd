@@ -11,14 +11,16 @@ func _ready():
 	
 	self.load_textures()
 	
-	var button: UIButton = UIButton.new()
-	button.position.x = 100
-	button.position.y = 100
-	button.texture_code = "button-sheet"
+	var sawayama_button: UIButton = UIButton.new()
+	sawayama_button.position.x = 100
+	sawayama_button.position.y = 100
+	sawayama_button.texture_code = "button-sheet"
 	
-	var _test = button.connect("on_released",self,"_on_released")
+	var _test = sawayama_button.connect("on_released",self,"_on_released",["Sawayama"])
 	
-	add_child(button)
+	add_child(sawayama_button)
 
-func _on_released(_event):
+func _on_released(_event,game):
+	get_root().switch_game(game)
 	print("Got mouse release!")
+	

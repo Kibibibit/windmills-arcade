@@ -8,6 +8,9 @@ var textures: Dictionary = {}
 func get_texture_info(texture: String) -> TextureInfo:
 	return textures[texture]
 
+func get_root() -> RootObject:
+	return get_tree().root.get_node("Root") as RootObject
+
 func load_textures():
 	for key in textures.keys():
 		var textureInfo: TextureInfo = textures[key]

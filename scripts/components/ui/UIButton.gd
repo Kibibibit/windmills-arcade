@@ -16,8 +16,11 @@ func _ready():
 	
 	shape = CollisionShape2D.new()
 	shape.shape = RectangleShape2D.new()
-	shape.position.y += sprite.texture.get_height()/texture_info.vframes/2
-	shape.shape.extents = Vector2(sprite.texture.get_width()/texture_info.hframes,sprite.texture.get_height()/texture_info.vframes/2)
+	
+	var y_extent: int = ((sprite.texture.get_height()as float)/(texture_info.vframes as float)/2) as int
+	var x_extent: int = ((sprite.texture.get_width()as float)/(texture_info.hframes as float)) as int
+	shape.position.y += y_extent
+	shape.shape.extents = Vector2(x_extent,y_extent)
 	
 	area_2d.add_child(shape)
 	add_child(area_2d)
@@ -25,14 +28,14 @@ func _ready():
 	var _entered = area_2d.connect("area_entered",self,"_on_area_entered")
 	var _exited = area_2d.connect("area_exited",self,"_on_area_exited")
 
-func _draw():
-	draw_rect(Rect2(shape.position, shape.shape.extents), Color(1,0,0))
 
 func _input(event):
 	if (event is InputEventMouseButton && mouse_entered && event.button_index == BUTTON_LEFT):
 		if (event.pressed):
+			sprite.frame_coords = Vector2(sprite.frame_coords.x,2)
 			emit_signal("on_pressed",event)
 		else:
+			sprite.frame_coords = Vector2(sprite.frame_coords.x,1)
 			emit_signal("on_released",event)
 
 func _process(_delta):
@@ -42,12 +45,12 @@ func _on_area_entered(area: Area2D) -> void:
 	if (area.name != "MouseArea"):
 		return
 	mouse_entered = true
-	sprite.frame_coords = Vector2(0,1)
+	sprite.frame_coords = Vector2(sprite.frame_coords.x,1)
 	update()
 
 func _on_area_exited(area: Area2D) -> void:
 	if (area.name != "MouseArea"):
 		return
 	mouse_entered = false
-	sprite.frame_coords = Vector2(0,0)
+	sprite.frame_coords = Vector2(sprite.frame_coords.x,0)
 	update()
