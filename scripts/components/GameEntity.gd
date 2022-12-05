@@ -4,15 +4,15 @@ extends GameObject
 var sprite: Sprite
 var frame_coords: Vector2
 var texture_code: String
-
+var texture_info: TextureInfo
 func _ready():
 	sprite = Sprite.new()
-	var textureInfo: TextureInfo = .get_game().get_texture_info(texture_code)
+	texture_info = .get_game().get_texture_info(texture_code)
 	sprite.centered = false
-	sprite.hframes = textureInfo.hframes
-	sprite.vframes = textureInfo.vframes
+	sprite.hframes = texture_info.hframes
+	sprite.vframes = texture_info.vframes
 	sprite.frame_coords = frame_coords
-	sprite.texture = textureInfo.get_texture()
+	sprite.texture = texture_info.get_texture()
 	add_child(sprite)
 	
 func _exit_tree():
