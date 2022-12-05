@@ -5,7 +5,7 @@ extends Node2D
 var textures: Dictionary = {}
 
 
-func get_texture(texture: String) -> TextureInfo:
+func get_texture_info(texture: String) -> TextureInfo:
 	return textures[texture]
 
 func load_textures():
