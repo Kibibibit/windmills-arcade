@@ -15,6 +15,11 @@ _global_script_classes=[ {
 "path": "res://scripts/components/Card.gd"
 }, {
 "base": "Node2D",
+"class": "CardSlot",
+"language": "GDScript",
+"path": "res://scripts/components/CardSlot.gd"
+}, {
+"base": "Node2D",
 "class": "Deck",
 "language": "GDScript",
 "path": "res://scripts/components/Deck.gd"
@@ -54,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/games/Sawayama.gd"
 }, {
+"base": "PlayingCard",
+"class": "StackingCard",
+"language": "GDScript",
+"path": "res://scripts/components/StackingCard.gd"
+}, {
 "base": "Object",
 "class": "TextureInfo",
 "language": "GDScript",
@@ -66,6 +76,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Card": "",
+"CardSlot": "",
 "Deck": "",
 "GameEntity": "",
 "GameObject": "",
@@ -74,6 +85,7 @@ _global_script_class_icons={
 "PlayingCard": "",
 "RootObject": "",
 "Sawayama": "",
+"StackingCard": "",
 "TextureInfo": "",
 "UIButton": ""
 }

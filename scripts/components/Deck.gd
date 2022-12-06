@@ -35,6 +35,7 @@ func add_card(card: Card):
 
 func deal_card() -> Card:
 	var card = cards.pop_back()
+	card.face_up = true
 	card.position.x = global_position.x
 	card.position.y = global_position.y
 	draw_sprites()
