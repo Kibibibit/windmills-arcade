@@ -11,7 +11,7 @@ func _ready():
 	self.load_textures()
 	
 	
-	var _test = $Buttons/Sawayama.connect("on_released",self,"_on_released",["Sawayama"])
+	var _sawayama = $Buttons/Sawayama.connect("on_released",self,"_on_released",["Sawayama"])
 	
 
 func _on_released(_event,game):

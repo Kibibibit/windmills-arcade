@@ -14,6 +14,11 @@ func _ready():
 	sprite.frame_coords = frame_coords
 	sprite.texture = texture_info.get_texture()
 	add_child(sprite)
-	
+
+func _process(_delta):
+	if (sprite.frame_coords != frame_coords):
+		sprite.frame_coords = frame_coords
+
 func _exit_tree():
+	sprite.queue_free()
 	remove_child(sprite)

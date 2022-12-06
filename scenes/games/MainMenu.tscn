@@ -10,7 +10,7 @@ script = ExtResource( 1 )
 [node name="Buttons" type="Node2D" parent="."]
 
 [node name="Sawayama" parent="Buttons" instance=ExtResource( 3 )]
-position = Vector2( 238, 113 )
+position = Vector2( 71, 65 )
 
 [node name="Sprite" type="Sprite" parent="Buttons/Sawayama"]
 texture = ExtResource( 2 )

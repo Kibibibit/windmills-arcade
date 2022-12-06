@@ -8,4 +8,10 @@ func _ready():
 	
 	
 	self.load_textures()
+	
+	
+	var card: PlayingCard = PlayingCard.new(0,5)
+	card.texture_code = "card_sheet"
+	
+	add_child(card)
 
