@@ -16,3 +16,6 @@ func load_textures():
 		var textureInfo: TextureInfo = textures[key]
 		textureInfo._load()
 		textures[key] = textureInfo
+
+func new_game() -> void:
+	pass
