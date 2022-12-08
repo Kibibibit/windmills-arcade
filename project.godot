@@ -29,6 +29,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scripts/Root.gd"
 }, {
+"base": "GameParent",
+"class": "TicTacToe",
+"language": "GDScript",
+"path": "res://scripts/games/TicTacToe.gd"
+}, {
+"base": "MouseTarget",
+"class": "TicTacToeTile",
+"language": "GDScript",
+"path": "res://scripts/components/games/tictactoe/TicTacToeTile.gd"
+}, {
 "base": "MouseTarget",
 "class": "UIButton",
 "language": "GDScript",
@@ -39,6 +49,8 @@ _global_script_class_icons={
 "MouseArea": "",
 "MouseTarget": "",
 "Root": "",
+"TicTacToe": "",
+"TicTacToeTile": "",
 "UIButton": ""
 }
 

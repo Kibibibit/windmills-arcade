@@ -1,3 +1,37 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/components/games/TicTacToeTile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/games/TicTacToe.gd" type="Script" id=2]
 
 [node name="Game" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Board" type="Node2D" parent="."]
+position = Vector2( 228, 114 )
+
+[node name="TicTacToeTile" parent="Board" instance=ExtResource( 1 )]
+position = Vector2( 0, 16 )
+
+[node name="TicTacToeTile2" parent="Board" instance=ExtResource( 1 )]
+position = Vector2( 32, 16 )
+
+[node name="TicTacToeTile3" parent="Board" instance=ExtResource( 1 )]
+position = Vector2( 64, 16 )
+
+[node name="TicTacToeTile4" parent="Board" instance=ExtResource( 1 )]
+position = Vector2( 0, 48 )
+
+[node name="TicTacToeTile5" parent="Board" instance=ExtResource( 1 )]
+position = Vector2( 32, 48 )
+
+[node name="TicTacToeTile6" parent="Board" instance=ExtResource( 1 )]
+position = Vector2( 64, 48 )
+
+[node name="TicTacToeTile7" parent="Board" instance=ExtResource( 1 )]
+position = Vector2( 0, 80 )
+
+[node name="TicTacToeTile8" parent="Board" instance=ExtResource( 1 )]
+position = Vector2( 32, 80 )
+
+[node name="TicTacToeTile9" parent="Board" instance=ExtResource( 1 )]
+position = Vector2( 64, 80 )

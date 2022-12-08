@@ -28,9 +28,10 @@ func _on_area_exited(area: Area2D) -> void:
 	if (!area.is_class("MouseTarget")):
 		return
 	var mouse_target: MouseTarget = area as MouseTarget
-	if (mouse_target.get_rid() == target.get_rid()):
-		target.on_mouse_leave()
-		target = null
+	if (target != null):
+		if (mouse_target.get_rid() == target.get_rid()):
+			target.on_mouse_leave()
+			target = null
 
 func _input(event):
 	if (event is InputEventMouseButton):
