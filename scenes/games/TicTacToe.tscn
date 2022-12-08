@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/components/games/TicTacToeTile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scripts/games/TicTacToe.gd" type="Script" id=2]
+[ext_resource path="res://scenes/components/ui/UIButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sprites/main_menu_button_sheet.png" type="Texture" id=4]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
@@ -35,3 +37,11 @@ position = Vector2( 32, 80 )
 
 [node name="TicTacToeTile9" parent="Board" instance=ExtResource( 1 )]
 position = Vector2( 64, 80 )
+
+[node name="NewGameButton" parent="." instance=ExtResource( 3 )]
+position = Vector2( 983, 8 )
+
+[node name="Sprite" type="Sprite" parent="NewGameButton"]
+texture = ExtResource( 4 )
+centered = false
+vframes = 3

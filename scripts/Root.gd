@@ -22,3 +22,4 @@ func switch_game(game_code: String):
 	
 	game = games[game_code].instance()
 	add_child(game)
+	game.new_game()
