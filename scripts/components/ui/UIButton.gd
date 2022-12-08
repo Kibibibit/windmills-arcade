@@ -1,49 +1,56 @@
 class_name UIButton
-extends Node2D
+extends MouseTarget
 
-signal on_pressed(mouse_event)
-signal on_released(mouse_event)
+signal button_entered()
+signal button_exited()
+signal button_pressed()
+signal button_released()
 
 
-onready var area_2d: Area2D = $Area2D
-var mouse_entered: bool = false
-onready var shape: CollisionShape2D = $Area2D/CollisionShape2D
-onready var sprite: Sprite = $Sprite
+
+var sprite: Sprite
+onready var shape: CollisionShape2D = $ButtonShape
+
+var frame_x_coord: int
+
+const normal_index = 0
+const highlight_index = 1
+const pressed_index = 2
+
+var texture_size: Vector2
 
 func _ready():
+	if (has_node("Sprite")):
+		sprite = get_node("Sprite")
+	else:
+		print("ERROR! UIButton ",self," has no sprite!!!!")
+	var _height: float = (sprite.texture.get_height() as float)/sprite.vframes
+	var _width: float = (sprite.texture.get_width() as float)/sprite.hframes
+	texture_size = Vector2(_height,_width)
 	
+	var _extent_x = _height/2
+	var _extent_y = _width/2
 	
-	var y_extent: int = ((sprite.texture.get_height()as float)/(sprite.vframes as float)/2) as int
-	var x_extent: int = ((sprite.texture.get_width()as float)/(sprite.hframes as float)) as int
-	shape.position.y += y_extent
-	shape.shape.extents = Vector2(x_extent,y_extent)
-	
-	var _entered = area_2d.connect("area_entered",self,"_on_area_entered")
-	var _exited = area_2d.connect("area_exited",self,"_on_area_exited")
+	shape.position = Vector2(_extent_x,_extent_y)
+	shape.shape.extents = Vector2(_extent_x, _extent_y)
 
+func set_frame(index: int):
+	sprite.frame_coords = Vector2(frame_x_coord, index)
 
-func _input(event):
-	if (event is InputEventMouseButton && mouse_entered && event.button_index == BUTTON_LEFT):
-		if (event.pressed):
-			sprite.frame_coords = Vector2(sprite.frame_coords.x,2)
-			emit_signal("on_pressed",event)
-		else:
-			sprite.frame_coords = Vector2(sprite.frame_coords.x,1)
-			emit_signal("on_released",event)
+func on_mouse_enter():
+	set_frame(highlight_index)
+	emit_signal("button_entered")
 
-func _process(_delta):
-	pass
+func on_mouse_leave():
+	set_frame(normal_index)
+	emit_signal("button_exited")
 
-func _on_area_entered(area: Area2D) -> void:
-	if (area.name != "MouseArea"):
-		return
-	mouse_entered = true
-	sprite.frame_coords = Vector2(sprite.frame_coords.x,1)
-	update()
+func on_mouse_pressed(button: int):
+	if (button == BUTTON_LEFT):
+		set_frame(pressed_index)
+		emit_signal("button_pressed")
 
-func _on_area_exited(area: Area2D) -> void:
-	if (area.name != "MouseArea"):
-		return
-	mouse_entered = false
-	sprite.frame_coords = Vector2(sprite.frame_coords.x,0)
-	update()
+func on_mouse_released(button: int):
+	if (button == BUTTON_LEFT):
+		set_frame(highlight_index)
+		emit_signal("button_released")
