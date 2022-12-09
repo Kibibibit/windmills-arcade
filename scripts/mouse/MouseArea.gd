@@ -26,7 +26,7 @@ func _on_area_exited(area: Area2D) -> void:
 	remove_target(mouse_target)
 	sort_targets()
 
-func _input(event):
+func _input(event) -> void:
 	if (event is InputEventMouseButton):
 		var mouse_event: InputEventMouseButton = event as InputEventMouseButton
 		if (target != null):
@@ -35,7 +35,7 @@ func _input(event):
 			else:
 				target.on_mouse_released(mouse_event.button_index)
 
-func remove_target(mouse_target: MouseTarget):
+func remove_target(mouse_target: MouseTarget) -> void:
 	var index: int = 0
 	var found: bool = false
 	for i in targets:
@@ -46,7 +46,7 @@ func remove_target(mouse_target: MouseTarget):
 	if (found):
 		targets.remove_at(index)
 
-func sort_targets():
+func sort_targets() -> void:
 	targets.sort_custom(Callable(self,"z_index_sort"))
 	if (target != null && targets.size() == 0):
 		target.on_mouse_leave()
@@ -62,8 +62,7 @@ func sort_targets():
 		target.on_mouse_leave()
 		new_target.on_mouse_enter()
 		target = new_target
-	
-	
 
-func z_index_sort(a,b):
+
+func z_index_sort(a,b) -> bool:
 	return a.z_index > b.z_index

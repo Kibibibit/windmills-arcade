@@ -19,7 +19,7 @@ const pressed_index = 2
 
 var texture_size: Vector2
 
-func _ready():
+func _ready() -> void:
 	if (has_node("Sprite2D")):
 		sprite = get_node("Sprite2D")
 	else:
@@ -34,23 +34,23 @@ func _ready():
 	shape.position = Vector2(_extent_x,_extent_y)
 	shape.shape.extents = Vector2(_extent_x, _extent_y)
 
-func set_frame(index: int):
+func set_frame(index: int) -> void:
 	sprite.frame_coords = Vector2(frame_x_coord, index)
 
-func on_mouse_enter():
+func on_mouse_enter() -> void:
 	set_frame(highlight_index)
 	emit_signal("button_entered")
 
-func on_mouse_leave():
+func on_mouse_leave() -> void:
 	set_frame(normal_index)
 	emit_signal("button_exited")
 
-func on_mouse_pressed(button: int):
+func on_mouse_pressed(button: int) -> void:
 	if (button == MOUSE_BUTTON_LEFT):
 		set_frame(pressed_index)
 		emit_signal("button_pressed")
 
-func on_mouse_released(button: int):
+func on_mouse_released(button: int) -> void:
 	if (button == MOUSE_BUTTON_LEFT):
 		set_frame(highlight_index)
 		emit_signal("button_released")

@@ -4,14 +4,14 @@ extends Area2D
 
 
 
-func on_mouse_enter():
+func on_mouse_enter() -> void:
 	pass
 
-func on_mouse_leave():
+func on_mouse_leave() -> void:
 	pass
 
-func on_mouse_pressed(_button: int):
+func on_mouse_pressed(_button: int) -> void:
 	pass
 
-func on_mouse_released(_button: int):
+func on_mouse_released(_button: int) -> void:
 	pass

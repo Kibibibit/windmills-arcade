@@ -22,13 +22,13 @@ var running: bool = false
 @onready var winner_x: Array = [[0,1,2],[0,1,2],[0,1,2],[0,0,0],[1,1,1],[2,2,2],[0,1,2],[0,1,2]]
 @onready var winner_y: Array = [[0,0,0],[1,1,1],[2,2,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2],[2,1,0]]
 
-func new_game():
+func new_game() -> void:
 	running = true
 	player = 0
 	for key in tile_map.keys():
 		tile_map[key].sprite.frame_coords.y = 0
 
-func _ready():
+func _ready() -> void:
 	super()
 	for key in tile_map.keys():
 		tile_map[key].connect("tile_pressed",Callable(self,"_on_tile_pressed").bind(key))
@@ -40,7 +40,7 @@ func get_tile(x: int, y:int):
 func switch_player()->void:
 	player = abs(player-1) as int
 	
-func check_winner():
+func check_winner() -> void:
 	var winner_state: int = 0
 	for i in range(0,winner_x.size()):
 		var x_set = winner_x[i]
@@ -62,7 +62,7 @@ func check_winner():
 		print("Player ",winner_state," won!")
 		running = false
 
-func _on_tile_pressed(state: int, loc: String):
+func _on_tile_pressed(state: int, loc: String) -> void:
 	if (state != 0 || !running):
 		return
 	
