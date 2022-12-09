@@ -3,6 +3,8 @@ extends GameParent
 
 
 @onready var new_game_button = $NewGameButton
+@onready var back_button = $BackButton
+
 var player: int = 0
 
 var running: bool = false
@@ -33,6 +35,7 @@ func _ready() -> void:
 	for key in tile_map.keys():
 		tile_map[key].connect("tile_pressed",Callable(self,"_on_tile_pressed").bind(key))
 	new_game_button.connect("button_released",Callable(self,"new_game"))
+	back_button.connect("button_released",Callable(self,"back"))
 
 func get_tile(x: int, y:int):
 	return tile_map["%d,%d"%[x,y]]

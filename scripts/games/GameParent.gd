@@ -8,3 +8,6 @@ func _ready() -> void:
 
 func new_game() -> void:
 	pass
+
+func back() -> void:
+	root.switch_game("main-menu")
