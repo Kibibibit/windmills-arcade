@@ -2,12 +2,12 @@ class_name TicTacToe
 extends GameParent
 
 
-onready var new_game_button = $NewGameButton
+@onready var new_game_button = $NewGameButton
 var player: int = 0
 
 var running: bool = false
 
-onready var tile_map: Dictionary = {
+@onready var tile_map: Dictionary = {
 	"0,0":$Board/TicTacToeTile,
 	"1,0":$Board/TicTacToeTile2,
 	"2,0":$Board/TicTacToeTile3,
@@ -19,8 +19,8 @@ onready var tile_map: Dictionary = {
 	"2,2":$Board/TicTacToeTile9,
 }
 
-onready var winner_x: Array = [[0,1,2],[0,1,2],[0,1,2],[0,0,0],[1,1,1],[2,2,2],[0,1,2],[0,1,2]]
-onready var winner_y: Array = [[0,0,0],[1,1,1],[2,2,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2],[2,1,0]]
+@onready var winner_x: Array = [[0,1,2],[0,1,2],[0,1,2],[0,0,0],[1,1,1],[2,2,2],[0,1,2],[0,1,2]]
+@onready var winner_y: Array = [[0,0,0],[1,1,1],[2,2,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2],[2,1,0]]
 
 func new_game():
 	running = true
@@ -29,9 +29,10 @@ func new_game():
 		tile_map[key].sprite.frame_coords.y = 0
 
 func _ready():
+	super()
 	for key in tile_map.keys():
-		var _listen = tile_map[key].connect("tile_pressed",self,"_on_tile_pressed",[key])
-	var _listen_new_game = new_game_button.connect("button_released",self,"new_game")
+		tile_map[key].connect("tile_pressed",Callable(self,"_on_tile_pressed").bind(key))
+	new_game_button.connect("button_released",Callable(self,"new_game"))
 
 func get_tile(x: int, y:int):
 	return tile_map["%d,%d"%[x,y]]
@@ -65,6 +66,6 @@ func _on_tile_pressed(state: int, loc: String):
 	if (state != 0 || !running):
 		return
 	
-	tile_map[loc].tile_pressed(player)
+	tile_map[loc].on_tile_pressed(player)
 	check_winner()
 	switch_player()

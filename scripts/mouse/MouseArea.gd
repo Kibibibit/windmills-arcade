@@ -3,24 +3,24 @@ extends Area2D
 
 
 var target: MouseTarget
-var targets: Array
+var targets: Array[MouseTarget]
 
 func _ready() -> void:
-	var _listen_enter = self.connect("area_entered",self,"_on_area_entered")
-	var _listen_leave = self.connect("area_exited",self,"_on_area_exited")
+	self.connect("area_entered",Callable(self,"_on_area_entered"))
+	self.connect("area_exited",Callable(self,"_on_area_exited"))
 
 func _process(_delta) -> void:
 	self.position = get_global_mouse_position()
 
 func _on_area_entered(area: Area2D) -> void:
-	if (!area.is_class("MouseTarget")):
+	if (!area is MouseTarget):
 		return
 	var mouse_target: MouseTarget = area as MouseTarget
 	targets.append(mouse_target)
 	sort_targets()
 
 func _on_area_exited(area: Area2D) -> void:
-	if (!area.is_class("MouseTarget")):
+	if (!area is MouseTarget):
 		return
 	var mouse_target: MouseTarget = area as MouseTarget
 	remove_target(mouse_target)
@@ -44,10 +44,10 @@ func remove_target(mouse_target: MouseTarget):
 			break
 		index += 1
 	if (found):
-		targets.remove(index)
+		targets.remove_at(index)
 
 func sort_targets():
-	targets.sort_custom(self,"z_index_sort")
+	targets.sort_custom(Callable(self,"z_index_sort"))
 	if (target != null && targets.size() == 0):
 		target.on_mouse_leave()
 		target = null

@@ -8,8 +8,8 @@ signal button_released()
 
 
 
-var sprite: Sprite
-onready var shape: CollisionShape2D = $ButtonShape
+var sprite: Sprite2D
+@onready var shape: CollisionShape2D = $ButtonShape
 
 var frame_x_coord: int
 
@@ -20,8 +20,8 @@ const pressed_index = 2
 var texture_size: Vector2
 
 func _ready():
-	if (has_node("Sprite")):
-		sprite = get_node("Sprite")
+	if (has_node("Sprite2D")):
+		sprite = get_node("Sprite2D")
 	else:
 		print("ERROR! UIButton ",self," has no sprite!!!!")
 	var _height: float = (sprite.texture.get_height() as float)/sprite.vframes
@@ -46,11 +46,11 @@ func on_mouse_leave():
 	emit_signal("button_exited")
 
 func on_mouse_pressed(button: int):
-	if (button == BUTTON_LEFT):
+	if (button == MOUSE_BUTTON_LEFT):
 		set_frame(pressed_index)
 		emit_signal("button_pressed")
 
 func on_mouse_released(button: int):
-	if (button == BUTTON_LEFT):
+	if (button == MOUSE_BUTTON_LEFT):
 		set_frame(highlight_index)
 		emit_signal("button_released")

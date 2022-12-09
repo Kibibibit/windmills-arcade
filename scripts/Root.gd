@@ -2,12 +2,12 @@ class_name Root
 extends Node2D
 
 
-onready var games: Dictionary = {
+@onready var games: Dictionary = {
 	"main-menu":load("res://scenes/games/menus/MainMenu.tscn"),
 	"tictactoe":load("res://scenes/games/TicTacToe.tscn")
 }
 
-var game
+var game: GameParent
 
 func _ready():
 	switch_game("main-menu")
@@ -20,6 +20,6 @@ func switch_game(game_code: String):
 		game.queue_free()
 		remove_child(game)
 	
-	game = games[game_code].instance()
+	game = games[game_code].instantiate()
 	add_child(game)
 	game.new_game()

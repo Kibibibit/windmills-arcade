@@ -6,44 +6,44 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
+config_version=5
 
-_global_script_classes=[ {
+_global_script_classes=[{
 "base": "Node2D",
-"class": "GameParent",
-"language": "GDScript",
+"class": &"GameParent",
+"language": &"GDScript",
 "path": "res://scripts/games/GameParent.gd"
 }, {
 "base": "Area2D",
-"class": "MouseArea",
-"language": "GDScript",
+"class": &"MouseArea",
+"language": &"GDScript",
 "path": "res://scripts/mouse/MouseArea.gd"
 }, {
 "base": "Area2D",
-"class": "MouseTarget",
-"language": "GDScript",
+"class": &"MouseTarget",
+"language": &"GDScript",
 "path": "res://scripts/mouse/MouseTarget.gd"
 }, {
 "base": "Node2D",
-"class": "Root",
-"language": "GDScript",
+"class": &"Root",
+"language": &"GDScript",
 "path": "res://scripts/Root.gd"
 }, {
 "base": "GameParent",
-"class": "TicTacToe",
-"language": "GDScript",
+"class": &"TicTacToe",
+"language": &"GDScript",
 "path": "res://scripts/games/TicTacToe.gd"
 }, {
 "base": "MouseTarget",
-"class": "TicTacToeTile",
-"language": "GDScript",
+"class": &"TicTacToeTile",
+"language": &"GDScript",
 "path": "res://scripts/components/games/tictactoe/TicTacToeTile.gd"
 }, {
 "base": "MouseTarget",
-"class": "UIButton",
-"language": "GDScript",
+"class": &"UIButton",
+"language": &"GDScript",
 "path": "res://scripts/components/ui/UIButton.gd"
-} ]
+}]
 _global_script_class_icons={
 "GameParent": "",
 "MouseArea": "",
@@ -58,6 +58,7 @@ _global_script_class_icons={
 
 config/name="Windmill Arcade"
 run/main_scene="res://scenes/Root.tscn"
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
 [gui]
