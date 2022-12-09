@@ -1,7 +1,7 @@
 class_name TicTacToeTile
 extends MouseTarget
 
-signal tile_pressed(state)
+signal tile_pressed(state: int)
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var shape: CollisionShape2D = $CollisionShape2D
