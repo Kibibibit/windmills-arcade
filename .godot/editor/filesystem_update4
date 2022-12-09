@@ -1,9 +1,0 @@
-res://scenes/Root.tscn
-res://scripts/Root.gd
-res://scripts/mouse/MouseArea.gd
-res://scenes/components/ui/UIButton.tscn
-res://scripts/mouse/MouseTarget.gd
-res://scripts/games/GameParent.gd
-res://scripts/components/games/tictactoe/TicTacToeTile.gd
-res://scripts/games/TicTacToe.gd
-res://scripts/games/menus/MainMenu.gd
